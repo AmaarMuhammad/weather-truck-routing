@@ -1,0 +1,23 @@
+# Render Blueprint for the Django API. In Render: New + > Blueprint > pick this repo.
+services:
+  - type: web
+    name: weather-truck-routing-api
+    runtime: python
+    plan: free
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    # a plan can need a TomTom call plus detour fallbacks and a weather batch;
+    # gunicorn's default 30 s worker timeout is too tight for a cold start
+    startCommand: gunicorn config.wsgi:application --timeout 90 --workers 2 --threads 4
+    healthCheckPath: /api/health
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.10"
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: "False"
+      - key: ALLOWED_HOSTS
+        value: "*"
+      - key: TOMTOM_API_KEY
+        sync: false   # set in the Render dashboard
