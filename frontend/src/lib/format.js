@@ -1,4 +1,5 @@
-export const ROUTE_COLORS = { A: "#2563eb", B: "#334155", C: "#0891b2" };
+// hues kept clear of each other and of the risk palette (green..purple, gray)
+export const ROUTE_COLORS = { A: "#2563eb", B: "#334155", C: "#c026d3" };
 
 export function fmtDuration(seconds) {
   const m = Math.round(seconds / 60);
