@@ -57,7 +57,10 @@ export default function MapView({ plan, heat, frameIndex, frameTime, selected, o
     for (const r of plan.routes) for (const [la, lo] of r.geometry) {
       w = Math.min(w, lo); e = Math.max(e, lo); s = Math.min(s, la); n = Math.max(n, la);
     }
-    map.fitBounds([[w, s], [e, n]], { padding: { top: 60, bottom: 110, left: 50, right: 50 }, duration: 900 });
+    // keep routes clear of the slider panel (bottom on desktop, top on phones)
+    const narrow = window.matchMedia("(max-width: 520px)").matches;
+    const padding = narrow ? { top: 110, bottom: 60, left: 24, right: 24 } : { top: 60, bottom: 130, left: 50, right: 50 };
+    map.fitBounds([[w, s], [e, n]], { padding, duration: 900 });
   }, [plan]);
 
   const onClick = (e) => {

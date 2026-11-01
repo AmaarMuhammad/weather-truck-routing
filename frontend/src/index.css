@@ -313,6 +313,9 @@ input { font-family: inherit; }
 
 @media (max-width: 520px) {
   .legend { display: none; }
-  .slider-panel { bottom: 44px; padding: 8px 10px; }
+  /* MapLibre's attribution expands along the bottom on narrow maps, so the
+     slider moves to the top; pinch-zoom replaces the zoom buttons */
+  .slider-panel { top: 12px; bottom: auto; padding: 8px 10px; }
+  .maplibregl-ctrl-top-left { display: none; }
   .field-row { grid-template-columns: 1fr; }
 }

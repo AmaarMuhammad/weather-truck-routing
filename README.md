@@ -4,8 +4,8 @@ A React + Django app that helps a truck driver pick the safest route. It takes o
 
 | | |
 |---|---|
-| **App** | _add Vercel URL_ |
-| **API** | _add Render URL_ (`GET /api/health`) |
+| **App** | https://weather-truck-routing-self.vercel.app |
+| **API** | https://weather-truck-routing-api-1ycg.onrender.com/api/health |
 | **Walkthrough** | _add Loom URL_ |
 
 ![App screenshot](docs/screenshot.png)
